@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cris Presentes, Cestas e Floricultura — João Pessoa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-mata:#1F3B2C;
+    --folha:#4C7A52;
+    --girassol:#F0AC1E;
+    --papoula:#B5194F;
+    --creme:#FBF6EC;
+    --carvao:#201C16;
+    --papel-borda: rgba(251,246,236,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--creme);
+    color:var(--carvao);
+    font-family:'Karla', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(251,246,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(32,28,22,0.08);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.5rem;
+    color:var(--verde-mata);
+  }
+  .brand span{color:var(--papoula); font-style:normal;}
+  .navlinks{display:flex; gap:36px; align-items:center; font-size:0.95rem;}
+  .navlinks a{text-decoration:none; color:var(--carvao); opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .btn-whats{
+    background:var(--verde-mata); color:var(--creme);
+    padding:11px 22px; border-radius:2px 14px 2px 14px;
+    font-size:0.92rem; text-decoration:none; font-weight:500;
+    white-space:nowrap;
+    transition:background .2s;
+  }
+  .btn-whats:hover{background:#16281c;}
+  @media (max-width:820px){ .navlinks a:not(.btn-whats){display:none;} }
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:stretch;
+    background:var(--verde-mata);
+    min-height:640px;
+  }
+  .hero-copy{
+    color:var(--creme);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:64px 56px;
+    max-width:560px;
+  }
+  .eyebrow{
+    font-size:0.85rem; color:var(--girassol); font-weight:700;
+    margin-bottom:18px;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.4rem, 4vw, 3.4rem);
+    color:var(--creme);
+    margin-bottom:22px;
+  }
+  .hero-copy h1 em{
+    font-style:italic; color:var(--girassol); font-weight:500;
+  }
+  .hero-copy p{
+    font-size:1.08rem; color:rgba(251,246,236,0.82);
+    max-width:460px; margin-bottom:34px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--girassol); color:var(--carvao);
+    padding:14px 28px; border-radius:2px 16px 2px 16px;
+    text-decoration:none; font-weight:700; font-size:0.98rem;
+    transition:transform .2s;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid rgba(251,246,236,0.4); color:var(--creme);
+    padding:14px 28px; border-radius:2px 16px 2px 16px;
+    text-decoration:none; font-weight:500; font-size:0.98rem;
+  }
+  .hero-photo{
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-photo img{
+    width:100%; height:100%; object-fit:cover;
+    object-position: center 30%;
+  }
+  .hero-photo::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, var(--verde-mata) 0%, rgba(31,59,44,0) 16%);
+  }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-photo{height:340px; order:-1;}
+    .hero-photo::after{background:linear-gradient(180deg, rgba(31,59,44,0) 60%, var(--verde-mata) 100%);}
+    .hero-copy{padding:44px 28px;}
+  }
+
+  /* SECTION LABEL */
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:40px; flex-wrap:wrap; gap:14px;
+  }
+  .section-head h2{font-size:clamp(1.8rem, 3vw, 2.4rem); color:var(--verde-mata);}
+  .section-head p{max-width:360px; color:rgba(32,28,22,0.65); font-size:0.98rem;}
+
+  /* PRODUCTS - mosaic */
+  .produtos{padding:96px 0 88px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:22px;
+  }
+  .card{
+    position:relative;
+    background:#fff;
+    border-radius:2px 26px 2px 26px;
+    overflow:hidden;
+    box-shadow:0 1px 0 rgba(32,28,22,0.06);
+    grid-column:span 3;
+  }
+  .card.big{grid-column:span 4;}
+  .card.small{grid-column:span 2;}
+  .card .ph{overflow:hidden;}
+  .card.big .ph{aspect-ratio:5/4;}
+  .card:not(.big) .ph{aspect-ratio:4/5;}
+  .card img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .card:hover img{transform:scale(1.04);}
+  .card-info{padding:20px 22px 24px;}
+  .tag{
+    display:inline-block; font-size:0.72rem; font-weight:700;
+    letter-spacing:0.02em; color:var(--papoula);
+    margin-bottom:8px;
+  }
+  .card h3{font-size:1.28rem; color:var(--carvao); margin-bottom:6px; font-weight:500;}
+  .card p{font-size:0.92rem; color:rgba(32,28,22,0.65); margin-bottom:14px;}
+  .card a.pedir{
+    font-size:0.88rem; font-weight:700; color:var(--verde-mata);
+    text-decoration:none; border-bottom:1px solid var(--folha);
+    padding-bottom:2px;
+  }
+  @media (max-width:940px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .card, .card.big, .card.small{grid-column:span 1;}
+  }
+
+  /* SOBRE */
+  .sobre{
+    background:var(--verde-mata); color:var(--creme);
+    padding:96px 0;
+  }
+  .sobre .wrap{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;
+  }
+  .sobre-photo{border-radius:2px 30px 2px 30px; overflow:hidden;}
+  .sobre h2{color:var(--creme); font-size:clamp(1.8rem,3vw,2.3rem); margin-bottom:22px;}
+  .sobre p{color:rgba(251,246,236,0.82); font-size:1.05rem; margin-bottom:18px; max-width:480px;}
+  .stat-row{display:flex; gap:40px; margin-top:32px;}
+  .stat b{font-family:'Fraunces', serif; font-size:2rem; color:var(--girassol); display:block;}
+  .stat span{font-size:0.85rem; color:rgba(251,246,236,0.7);}
+  @media (max-width:820px){
+    .sobre .wrap{grid-template-columns:1fr;}
+    .sobre-photo{order:-1; max-width:420px;}
+  }
+
+  /* CONTATO */
+  .contato{padding:96px 0;}
+  .contato-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px;
+  }
+  .info-list{list-style:none; margin-top:28px;}
+  .info-list li{
+    padding:18px 0; border-top:1px solid rgba(32,28,22,0.1);
+    display:flex; justify-content:space-between; gap:20px; font-size:0.98rem;
+  }
+  .info-list li:last-child{border-bottom:1px solid rgba(32,28,22,0.1);}
+  .info-list .label{color:rgba(32,28,22,0.55); font-size:0.85rem;}
+  .info-list a{text-decoration:none; font-weight:700; color:var(--papoula);}
+  .cta-box{
+    background:var(--girassol);
+    border-radius:2px 30px 2px 30px;
+    padding:40px 36px;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .cta-box h3{font-size:1.6rem; margin-bottom:14px; color:var(--carvao);}
+  .cta-box p{color:rgba(32,28,22,0.75); margin-bottom:24px; font-size:0.98rem;}
+  .cta-box .btn-primary{background:var(--carvao); color:var(--creme);}
+  @media (max-width:820px){ .contato-grid{grid-template-columns:1fr;} }
+
+  footer{
+    background:var(--carvao); color:rgba(251,246,236,0.6);
+    padding:36px 0; font-size:0.85rem;
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  footer a{color:rgba(251,246,236,0.8); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Cris<span>.</span> presentes &amp; flores</div>
+    <div class="navlinks">
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a class="btn-whats" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir no WhatsApp</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">CUIÁ · JOÃO PESSOA, PB</div>
+    <h1>Um mimo <em>de verdade</em>, entregue na sua porta.</h1>
+    <p>Buquês, cestas e pelúcias montados à mão, com flores frescas e aquele carinho que só quem gosta do que faz consegue colocar num presente.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#produtos">Ver produtos</a>
+      <a class="btn-ghost" href="https://www.instagram.com/crispresentesecestas/" target="_blank" rel="noopener">Seguir no Instagram</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="images/buque-girassol-classico.webp" alt="Buquê de girassóis com margaridas brancas, embrulhado em papel pêssego">
+  </div>
+</section>
+
+<section class="produtos wrap" id="produtos">
+  <div class="section-head">
+    <h2>O que sai do balcão</h2>
+    <p>Cada peça é montada na hora — combine flores, pelúcias e chocolates do jeito que preferir.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card big">
+      <div class="ph"><img src="images/buque-girassol-classico.webp" alt="Buquê de girassóis com margaridas brancas e embrulho pêssego"></div>
+      <div class="card-info">
+        <span class="tag">GIRASSÓIS</span>
+        <h3>Buquê Girassol Clássico</h3>
+        <p>Girassóis, margaridas e folhagens frescas num embrulho pêssego com laço dourado. Vem com cartão de mensagem.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph"><img src="images/cesta-dia-da-mulher.webp" alt="Cesta para o Dia da Mulher com balão de coração dourado e chocolates variados"></div>
+      <div class="card-info">
+        <span class="tag">CESTAS</span>
+        <h3>Cesta Feliz Dia da Mulher</h3>
+        <p>Seleção de chocolates, balão de coração e cartão personalizado, montados numa cesta pronta para presentear.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph"><img src="images/buque-girassol-van-gogh.webp" alt="Mini buquê de girassol com cartão ilustrado de Noite Estrelada e embrulho azul"></div>
+      <div class="card-info">
+        <span class="tag">EDIÇÃO ESPECIAL</span>
+        <h3>Mini Girassol Van Gogh</h3>
+        <p>Um girassol, margaridas e um cartão ilustrado — pequeno no tamanho, grande no gesto.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+
+    <div class="card big">
+      <div class="ph"><img src="images/buque-rosas-ferrero.webp" alt="Buquê de rosas vermelhas, crisântemos e bombons Ferrero Rocher"></div>
+      <div class="card-info">
+        <span class="tag">ROSAS + CHOCOLATE</span>
+        <h3>Buquê Rosas &amp; Ferrero</h3>
+        <p>Rosas vermelhas, crisântemos coloridos e três bombons Ferrero Rocher entre as flores. Embrulho rosa com laço dourado.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph"><img src="images/buque-pelucia-stitch-angel.webp" alt="Buquê com pelúcia rosa do personagem Angel, balão roxo e balas Fini"></div>
+      <div class="card-info">
+        <span class="tag">PELÚCIA</span>
+        <h3>Buquê Pelúcia Rosa &amp; Balão</h3>
+        <p>Pelúcia rosa cercada de flores do campo, balinhas e um balão "Você é Especial". Feito para arrancar sorriso.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ph"><img src="images/buque-rosas-premium.webp" alt="Buquê premium de rosas vermelhas e pêssego com margaridas e embrulho preto e dourado"></div>
+      <div class="card-info">
+        <span class="tag">ROSAS</span>
+        <h3>Buquê Rosas Premium</h3>
+        <p>Rosas vermelhas e pêssego, margaridas brancas e mimosa, num embrulho preto com detalhe dourado.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+
+    <div class="card big">
+      <div class="ph"><img src="images/buque-pelucia-stitch-azul.webp" alt="Buquê com pelúcia azul do personagem Stitch, girassol e chocolates Bis"></div>
+      <div class="card-info">
+        <span class="tag">PELÚCIA</span>
+        <h3>Buquê Pelúcia Azul &amp; Bis</h3>
+        <p>Pelúcia azul cercada por um girassol, flores do campo e barras de chocolate Bis — o queridinho de quem ama personagens.</p>
+        <a class="pedir" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Pedir agora →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="sobre-photo">
+      <img src="images/buque-pelucia-stitch-angel.webp" alt="Detalhe de buquê com pelúcia e flores do campo">
+    </div>
+    <div>
+      <h2>Feito à mão, no coração de João Pessoa</h2>
+      <p>Somos uma floricultura de bairro especializada em buquês, cestas de café da manhã, cestas de chocolate e presentes com pelúcia. Cada encomenda é montada na hora, pensada para o gosto de quem recebe.</p>
+      <p>Entregamos em toda João Pessoa e região — é só chamar no WhatsApp e combinar as flores, o embrulho e a mensagem do cartão.</p>
+      <div class="stat-row">
+        <div class="stat"><b>5.0</b><span>avaliação no Google</span></div>
+        <div class="stat"><b>58+</b><span>avaliações de clientes</span></div>
+        <div class="stat"><b>100%</b><span>montado na hora</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contato wrap" id="contato">
+  <div class="contato-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:8px;">
+        <h2>Visite ou peça pra casa</h2>
+      </div>
+      <ul class="info-list">
+        <li><span class="label">Endereço</span><span>R. Dr. Manoel Lopes de Carvalho, 962 — Cuiá, João Pessoa - PB</span></li>
+        <li><span class="label">Horário</span><span>Aberto hoje · fecha às 18h30</span></li>
+        <li><span class="label">Telefone</span><a href="tel:+5583988865504">(83) 98886-5504</a></li>
+        <li><span class="label">Instagram</span><a href="https://www.instagram.com/crispresentesecestas/" target="_blank" rel="noopener">@crispresentesecestas</a></li>
+      </ul>
+    </div>
+    <div class="cta-box">
+      <h3>Bora montar seu presente?</h3>
+      <p>Manda uma mensagem contando a ocasião e a gente monta a combinação certa de flores, cesta ou pelúcia.</p>
+      <a class="btn-primary" href="https://wa.me/5583988865504" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Cris Presentes, Cestas e Floricultura</span>
+    <span>Cuiá, João Pessoa - PB</span>
+  </div>
+</footer>
+
+</body>
+</html>
